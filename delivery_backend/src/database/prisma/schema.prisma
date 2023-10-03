@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id            Int         @id @default(autoincrement())
+  email         String      @unique @db.VarChar(255)
+  password      String      @db.VarChar(255)
+  name          String      @db.VarChar(255)
+  lastname      String      @db.VarChar(255)
+  phone         String      @unique @db.VarChar(80)
+  image         String?     @db.VarChar(255)
+  is_available  Boolean?
+  session_token String?     @db.VarChar(255)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  rolOnUser     rolOnUser[]
+}
+
+model rols {
+  id        Int         @id @default(autoincrement())
+  name      String?     @db.VarChar(255)
+  image     String?     @db.VarChar(255)
+  route    String?     @db.VarChar(255)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  userOnRol rolOnUser[]
+}
+
+model rolOnUser {
+  user       users    @relation(fields: [userId], references: [id])
+  userId     Int
+  rol        rols     @relation(fields: [rolId], references: [id])
+  rolId      Int
+  assignedAt DateTime @default(now())
+
+  @@id([userId, rolId])
+}
