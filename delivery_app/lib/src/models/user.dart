@@ -29,7 +29,7 @@ class User {
     });
 
     factory User.fromJson(Map<String, dynamic> json) => User(
-        id: json["id"] is int ? json["id"].toString() : json["id"],
+        id: json["id"],
         name: json["name"],
         lastname: json["lastname"],
         email: json["email"],

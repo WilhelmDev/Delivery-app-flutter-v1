@@ -22,7 +22,7 @@ class Rol {
     });
 
     factory Rol.fromJson(Map<String, dynamic> json) => Rol(
-        id: json["id"] is int ? json["id"].toString() : json["id"],
+        id: json["id"],
         name: json["name"],
         image: json["image"],
         route: json["route"],
