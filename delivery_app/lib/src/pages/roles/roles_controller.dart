@@ -13,4 +13,8 @@ class RolesController {
     user = User.fromJson(await sharedPref.read("user"));
     return null;
   }
+  // todo Delete function
+  logout() {
+    sharedPref.logout(context);
+  }
 }

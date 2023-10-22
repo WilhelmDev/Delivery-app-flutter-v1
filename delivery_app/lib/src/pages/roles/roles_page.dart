@@ -28,6 +28,12 @@ class _RolesPageState extends State<RolesPage> {
         title: const Text("Seleccione un rol"),
         backgroundColor: MyColors.primaryColor,
       ),
+    //   body: Center(
+    //     child: ElevatedButton(
+    //       onPressed: _controller.logout,
+    //       child: const Text('Cerrar sesion'))
+    //   )
+    // );
       body: ListView(
         children: _controller.user == null 
         ? []
